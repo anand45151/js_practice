@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #tablefromjs {
+        width: 100%;
+        border-collapse: collapse;
+
+    }
+</style>
+
+<body>
+    <h1>Registration Page </h1>
+    <table>
+        <tr>
+            <td>Fname <input type="text" placeholder="Enter the Fnaem" id="Fname"></td>
+        </tr>
+        <tr>
+            <td>Lname <input type="text" placeholder="Enter the Fnaem" id="Lname"></td>
+        </tr>
+        <tr>
+            <td>Address <input type="text" placeholder="Enter the Fnaem" id="Address"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" onclick="TAKEDATAFROMUSER()"></td>
+        </tr>
+    </table>
+    <div id="tableContainer"></div>
+</body>
+<script>
+
+    function TAKEDATAFROMUSER() {
+        const Fname = document.getElementById("Fname").value;
+        const Lname = document.getElementById("Lname").value;
+        const Address = document.getElementById("Address").value;
+
+        const tableContainer = document.getElementById("tableContainer");
+
+        const tableData = document.createElement("table")
+
+        if (!document.getElementById("tablefromjs")) {
+
+            const tableData = document.createElement("table");
+
+            tableData.id = "tablefromjs"
+            
+            const headerRow = document.createElement("tr"); 
+            
+            const headers = ["FNAME", "LNAME", "ADDRESS"];
+            
+            
+            headers.forEach(header => {
+            
+                const th = document.createElement("th");
+            
+                th.textContent = header;
+            
+                headerRow.appendChild(th);
+
+            });
+
+            
+            tableData.appendChild(headerRow);
+            tableContainer.appendChild(tableData)
+        }
+
+        const table = document.getElementById("tablefromjs");
+        const row = document.createElement("tr");
+        [Fname, Lname, Address].forEach(text => {
+            const td = document.createElement("td");
+            td.textContent = text;
+            row.appendChild(td);
+        });
+        table.appendChild(row);
+    
+    
+    }
+</script>
+</html>
